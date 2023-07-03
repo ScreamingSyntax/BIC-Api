@@ -28,9 +28,6 @@ module.exports = {
           message: "No Enquires to View",
         });
       }
-      fetchDateTime().then((value) => {
-        date = moment(value).format("YYYY-MM-DD");
-        time = moment(value).format("HH:mm");
         return res.json({
           date: date,
           time: time,
@@ -38,7 +35,6 @@ module.exports = {
           data: results,
         });
       });
-    });
   },
   submitEnquiry: (req, res) => {
     const data = req.body;
@@ -87,7 +83,8 @@ These are the user details that a student filled up to inquire.
     );
 });
   },
-  deleteEnquire: (req, res) => {
+  deleteEnquire: (req, res) =>
+  {
     const data = req.body;
     viewAvailabilityService(data, (err, results) => {
       if (results[0] === undefined) {

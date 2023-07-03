@@ -1,6 +1,11 @@
 const {viewPost:viewPostService, postBlog:postBlogService,viewAvailability:viewAvailabilityService,deleteBlog:deleteBlogService} = require("./post.service");
 const{ fs } = require("node:fs");
 const { unlink } = require('node:fs');
+const { fetchDateTime } = require("../../tools/date/date.time");
+const moment = require("moment-timezone");
+const { error } = require("node:console");
+moment.tz.setDefault("Asia/Kathmandu");
+
 
 const deleteImage = (imagePath,imageName) => {
     unlink(imagePath+imageName, (err) => {
@@ -34,8 +39,19 @@ module.exports = {
         const blog_image_name = req.files['blog_image'][0].filename;
         const writer_image_name = req.files['writer_image'][0].filename;
         const data = req.body;
-        console.log(data)
-        postBlogService(data,blog_image_name,writer_image_name,(err,result)=>
+
+        fetchDateTime().then((value) =>
+        {
+            if(value === false){
+                return res.json({
+                    success:0,
+                    message:"Error fetching date and time"
+                })
+            }
+        current_date = moment(value).format("YYYY-MM-DD");
+        current_time = moment(value).format("HH:mm");
+        postBlogService
+        (data,blog_image_name,writer_image_name,current_date ,current_time,(err,result)=>
         {
             if(err){
                 return res.json({
@@ -47,8 +63,7 @@ module.exports = {
                 success:1,
                 data:result
             })
-        }
-        );
+        });});
     },
     deleteBlogController:(req,res)=>{
         const data = req.body;
@@ -77,7 +92,5 @@ module.exports = {
                 })
             }
         })
-
     }
-    
 }

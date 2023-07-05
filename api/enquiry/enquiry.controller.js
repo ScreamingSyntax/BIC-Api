@@ -3,7 +3,6 @@ const {
 } = require("./enquiry.service");
 const { json } = require("express").json();
 const { mailTransporter, mailOptions } = require("../../mailer/mailer");
-// const { options } = require('./enquiry.router');
 const { fetchDateTime } = require("../../tools/date/date.time");
 const moment = require("moment-timezone");
 moment.tz.setDefault("Asia/Kathmandu");

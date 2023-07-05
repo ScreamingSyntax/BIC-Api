@@ -15,7 +15,7 @@ module.exports = {
         }
         return res.json({
             success:1,
-            data:"Successfully Added Contact Details"
+            message:"Successfully Added Contact Details"
         })
     })
   },

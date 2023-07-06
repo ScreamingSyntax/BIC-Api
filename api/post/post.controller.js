@@ -37,6 +37,7 @@ module.exports = {
     },
     postBlogController:(req,res)=>{
         const data = req.body;
+        console.log(data)
         const blog_image_name = req.files['blog_image'][0].filename;
         const writer_image_name = req.files['writer_image'][0].filename;
         fetchDateTime().then((value) =>

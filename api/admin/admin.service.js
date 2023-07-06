@@ -125,17 +125,19 @@ module.exports = {
         })
         )
     },
-    viewPostByID:(data,callBack)=>{
-        pool.query("Select * from post where post_id=?",
-        [data.post_id],
-        ((err,result)=>{
-            if(err){
-                return callBack(err,null);
+    viewPostByID: (data, callBack) => {
+        pool.query(
+            "SELECT * FROM post WHERE post_id = ?",
+            [data.post_id],
+           ((err, result) => {
+                if (err) {
+                    return callBack(err, null);
+                }
+                // console.log(result);
+                return callBack(null, result);
             }
-            return callBack(null,result);
-        })
-        )
-    },
+        ));
+    },    
     updateBlogContentService:(data,blog_image_name,writer_image_name,callBack)=>{
         pool.query("update post set title=?,description=?,blog_image=?,writer_image=?,writer_name=? where post_id=?",
         [data.title,data.description,blog_image_name,writer_image_name,data.writer_name,data.post_id],
@@ -161,4 +163,50 @@ module.exports = {
         })
         )
     },
+    // viewThreeAcendingBlogService:(data,callBack)=>{
+    //     console.log("This is data ",data)
+    //     pool.query("SELECT * FROM post where post_id>=? limit 3",
+    //     [data.post_id],
+    //     ((err,result)=>{
+    //         if(err){
+    //             return callBack(err,null);
+    //         }
+    //         return callBack(null,result)
+    //     })
+    //     )
+    // },
+    // viewThreeDescenginBlogService:(data,callBack)=>{
+    //     pool.query(" SELECT * FROM post where post_id<=? order by post_id desc LIMIT 3",
+    //     [data.post_id],
+    //     ((err,result)=>{
+    //         if(err){
+    //             return callBack(err,null);
+    //         }
+    //         return callBack(null,result)
+    //     })
+    //     )
+    // },
+    viewRecentBlogService:(data,callBack)=>{
+        // console.log(data.post_id)
+        pool.query("select * from post where post_Id != ? order by post_id desc limit 2",
+        [data.post_id],
+        ((err,result)=>{
+            if(err){
+                return callBack(err,null);
+            }
+            return callBack(null,result);
+        })
+        )
+    },
+    deleteAllPostService:callBack=>{
+        pool.query("DELETE FROM post",
+        [],
+        ((err,result)=>{
+            if(err){
+                return callBack(err,null);
+            }
+            return callBack(null,result)
+        })
+        )
+    }
 }

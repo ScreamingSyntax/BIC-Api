@@ -13,6 +13,8 @@ const {
   deleteAllEnquireService,
   viewPostByID,
   updateBlogContentService,
+  viewRecentBlogService,
+  deleteAllPostService
 } = require("./admin.service");
 const { unlink } = require("node:fs");
 const { sign } = require("jsonwebtoken");
@@ -276,13 +278,105 @@ module.exports = {
       );
     });
   },
+  viewRecentBlogsController:(req,res)=>{
+    const data = req.query;
+    // console.log(data)
+    // console.log(req.query)
+    // console.log(data.post_id);
+    if(data.post_id === undefined){
+      return res.json({
+        success:0,
+        message:"Send post_id to view :<>"
+      })
+      }
+    viewPostByID(data,(err,result1)=>{
+      // console.log(result1)
+      if(err)
+      {
+        return res.json({
+          success:0,
+          message:"Error fetching data from post_id"
+        })
+      }
+      if(result1.length !=1){
+        return res.json({
+          success:0,
+          message:"The post doesn't exist"
+        })
+      }
+      else{
+        viewRecentBlogService(result1[0],(err,result2)=>{
+          if(err){
+            return res.json({
+              success:0,
+              message:"The post doesn't exits"
+            })
+          }
+          return res.json({
+            success:1,
+            mainData: result1,
+            recentData:result2
+          })
+        });
+      }
+    })
+  },
+  // viewThreeBlogController:(req,res)=>{
+  //   const data = req.query;
+  //   // console.log(req.query)
+  //   console.log(data.post_id);
+  //   if(data.post_id === undefined){
+  //     return res.json({
+  //       success:0,
+  //       message:"Send post_id to view :<>"
+  //     })
+  //   }
+  //   viewThreeAcendingBlogService(data,(err,result)=>{
+  //     // console.log(result.length)
+  //     console.log(result)
+  //     if(err){
+  //       return res.json({
+  //         success:0,
+  //         message:"Error Viewing Blogs"
+  //       })
+  //     }
+  //     if(result.length==0){
+  //       return res.json({
+  //         success:0,
+  //         message:"The post you are trying to view doesn't exist"
+  //       })
+  //     }
+  //     if(result.length==3){
+  //       return res.json({
+  //         success:1,
+  //         data:result
+  //       })
+  //     }
+  //     if(result.length<3){
+  //       viewThreeDescenginBlogService(data,(err,result)=>{
+  //         console.log(result)
+  //         if(err){
+  //           return res.json({
+  //             success:0,
+  //             message:"Error Viewing Blogs"
+  //           })
+  //         }
+  //         return res.json({
+  //           success:1,
+  //           data:result
+  //         })
+  //       })
+  //     }
+
+  //   })
+  // },
   deleteBlogController: (req, res) => {
     const data = req.body;
     const imagePath = "images/blog/";
     console.log(data);
     viewPostAvailabilityService(data, (err, result) => {
       if (result[0] === undefined) {
-        res.json({
+     return  res.json({
           success: 0,
           message: "The post you want to delete doesn't exist",
         });
@@ -309,4 +403,33 @@ module.exports = {
       }
     });
   },
+  deleteAllPostController:(req,res)=>{
+    viewPostService((err,result)=>{
+      if(result.length===0){
+        return res.json({
+          success:0,
+          message:"No Posts To Delete"
+        })
+      }
+    })
+    deleteAllPostService((err,result)=>{
+      if(err){
+        res.json({
+          success:0,
+          message:"Error Deleting Post"
+        })
+      }
+      console.log(result)
+      if(result.length===0){
+        res.json({
+          success:0,
+          message:"Not Posts to Delete"
+        })
+      }
+      return res.json({
+        success:0,
+        message:"Deleted All Posts"
+      })
+    });
+  }
 };

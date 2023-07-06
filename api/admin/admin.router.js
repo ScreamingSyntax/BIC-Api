@@ -1,4 +1,4 @@
-const {viewEnquiry,deleteEnquire,viewContact,deleteContact,viewPostController,deleteBlogController,adminLoginController,deleteAllContactService,deleteAllEnquiry,viewPostByIDController,updateBlogController} = require('./admin.controller');
+const {viewEnquiry,deleteEnquire,viewContact,deleteContact,viewPostController,deleteBlogController,adminLoginController,deleteAllContactService,deleteAllEnquiry,viewPostByIDController,updateBlogController,viewRecentBlogsController,deleteAllPostController} = require('./admin.controller');
 const router = require('express').Router();
 const {checkToken} = require('../../token/token.validation');
 const path = require('path');
@@ -27,5 +27,7 @@ router.delete('/post',checkToken,deleteBlogController);
 router.get('/clearc',checkToken,deleteAllContactService);
 router.get('/cleare',checkToken,deleteAllEnquiry);
 router.get("/postid",checkToken,viewPostByIDController);
+router.get('/recent',viewRecentBlogsController);
+router.delete('/postall',checkToken,deleteAllPostController)
 
 module.exports = router;

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "lunar-gradient-314602",
+  "private_key_id": "3083799d6d730100292467fe48e8092abd029bdf",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC2DU2p72ZRax+0\nXCYzr7jreohxPx1/jFjvJVJoZv7QhIAUsenpKyn5rr7S9fZ83bp5qQ8Crbrl6ajb\nV1ZThVkucgNjDthJhmKk43yRzPStQxTAt8kjV8KnGlq6vRS3XDxNPbnl1bDs9CBt\nxP7fW1kZ1mtu5mZcweMKqdnpEcyUXdE8DcwknKgoRr3aYM5z+XiR+z+I39F2PSvn\nSXTNvJsNGqWQm5VXMByiZvZ52OXPF9PuLfpnFWlMDkC7Mog0ZlZAKDA1w8sB5R6O\nYEjQ3luZnhsVPND/Wc1HF0DsrXoqhWomiNYwEGklp7pxwP0uKzwnrh1ien0k96pV\nRONYK1T7AgMBAAECggEAHSombfnnN1Xk/1zf1dnp0vePUi0dSaivOqiM+iK94aPI\nbQhPg8YhdFl1QpCay0guLn1R5Uj1rw1uuqzULI8pSVKEjmL7bVP1C5tSAn2GGRet\nBG6s71eI3IJRVKcj4XgKRQmFdXd1X5CAfXVYq2mT7Zq3HU4VyfhZqgSp3ze1wXK8\n/VgPyjg23SBKve7a5X5Zr0wTeMCogoPetsNfQAsDAcQmhVdIonBFzTlXNH8BOsXX\nT3y207HXHJmXFuJ289Ul0sNw18i7z0RukwVyVBz2fGnH5oFqakOh+x7Fl7qNIgr1\nrQNzogYMarEZkoqiXuTS5Uy63wJaLOO1rt3SezdxQQKBgQDZmK8tGpyUVmD8mQkI\n6LmhdsPmkTBRFcFFkaQJjFuVwLlq31Q1KkH8Jfdkc/zsEYDBkefNiY86RaANfT0x\nCYsgpaICMZBUE/nrRFQ75dftw/gKu629sR9bdUvJ6z0ozY5L808T0iVMBVNjwsdf\njj+Tqj4p1dyYr0JQ2rFqaWHyYQKBgQDWLquF2CLrSV8plfZwEnLYgTefEthpA3PZ\nAX9U+7vlXJdBb0cuZEISmZIDdTZreDfN4ltuCCd72Jjg41xpnkjFlsl8uFrgunbS\npbQK7etsEd5uK3FBsLxNz7ptjp1IsU4G3a+cu1zmV+kkrqDvlqAycpJNoKFG9lt7\nsunaljp82wKBgQCrws5keCEpJpYgTlzHX41IWwuAMRNGrjmFxNULhHO23g5+whMi\ndFzpwL5r2PLJFXfhVF7565/Xi6Yvf7CRyMq91oDv4lffRnV8tM8ZCPFNied98W/P\n0MTD2O8eUEZSsw+j/EdrifJO89VDZjkiwJKG6VdwhpQ/IfjjAf4R1WWvgQKBgFGo\nNWiwAJAnxwo5zFzqC7MTgLs7GhrfYBmKApvJ5dcKN/iQjljXjIE+33ZGB9ttWAk8\nlZMbtMH40EBdLmxuFlyOon7UYoFvVcH1vvCzyJ/JKD5kfaeH1CLuYatHRhvizVa8\nyik9HawMNCzyDxWJHcZd+/1wkkxVvIcqrRHTWLUlAoGBALE7cKq1L1t6MN0L68Iz\nbB1nx65TBrLXl+8klaEhKRJSIB7ggqTPNSqDTL+YR7O891Z+5CAIA4uTREHdA3GV\nEgbJs6hydPvAcVoJcctIxsINGKvw9ZpniyrmO6orNB8P8F4QaN2A4nfUn++DD0SY\nRopyhCj3DtzFwLiP0yjz5nj4\n-----END PRIVATE KEY-----\n",
+  "client_email": "bic-website@lunar-gradient-314602.iam.gserviceaccount.com",
+  "client_id": "109607992544145781513",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bic-website%40lunar-gradient-314602.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

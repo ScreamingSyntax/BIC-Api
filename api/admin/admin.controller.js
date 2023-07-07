@@ -20,7 +20,7 @@ const { unlink } = require("node:fs");
 const { sign } = require("jsonwebtoken");
 const { json } = require("express");
 require("dotenv").config();
-
+const fs = require('fs-extra');
 const deleteImage = (imagePath, imageName) => {
   unlink(imagePath + imageName, (err) => {
     if (err) throw err;
@@ -374,7 +374,9 @@ module.exports = {
     const data = req.body;
     const imagePath = "images/blog/";
     console.log(data);
+    console.log(`this is data ${data}`)
     viewPostAvailabilityService(data, (err, result) => {
+      // result
       if (result[0] === undefined) {
      return  res.json({
           success: 0,
@@ -404,6 +406,13 @@ module.exports = {
     });
   },
   deleteAllPostController:(req,res)=>{
+    fs.emptyDir('images/blog/')
+    .then(() => {
+      console.log('All post images deleted successfully.');
+    })
+    .catch((err) => {
+      console.error('Error deleting files:', err);
+    });
     viewPostService((err,result)=>{
       if(result.length===0){
         return res.json({
@@ -411,25 +420,28 @@ module.exports = {
           message:"No Posts To Delete"
         })
       }
+      else{
+        deleteAllPostService((err,result)=>{
+          if(err){
+           return  res.json({
+           success:0,
+              message:"Error Deleting Post"
+            })
+          }
+          console.log(result)
+          if(result.length===0){
+           return res.json({
+              success:0,
+              message:"Not Posts to Delete"
+            })
+          }
+          return res.json({
+            success:0,
+            message:"Deleted All Posts"
+          })
+        });
+      }
     })
-    deleteAllPostService((err,result)=>{
-      if(err){
-        res.json({
-          success:0,
-          message:"Error Deleting Post"
-        })
-      }
-      console.log(result)
-      if(result.length===0){
-        res.json({
-          success:0,
-          message:"Not Posts to Delete"
-        })
-      }
-      return res.json({
-        success:0,
-        message:"Deleted All Posts"
-      })
-    });
+ 
   }
 };

@@ -104,6 +104,7 @@ module.exports = {
     },
 
     viewPostAvailabilityService: (data,callBack)=>{
+        console.log(data)
         pool.query("Select * from post where post_id=?",
         [data.post_id],
         ((err,result)=>{

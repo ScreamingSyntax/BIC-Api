@@ -24,8 +24,8 @@ router.delete('/contact',checkToken,deleteContact);
 router.get('/post',checkToken,viewPostController);
 router.patch("/post",upload.fields([{name:'blog_image',maxCount: 1},{name:'writer_image',maxCount:1}]),updateBlogController);
 router.delete('/post',checkToken,deleteBlogController);
-router.get('/clearc',checkToken,deleteAllContactService);
-router.get('/cleare',checkToken,deleteAllEnquiry);
+router.delete('/clearc',checkToken,deleteAllContactService);
+router.delete('/cleare',checkToken,deleteAllEnquiry);
 router.get("/postid",checkToken,viewPostByIDController);
 router.get('/recent',viewRecentBlogsController);
 router.delete('/postall',checkToken,deleteAllPostController)
